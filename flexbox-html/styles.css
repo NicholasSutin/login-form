@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--your-custom-font);
+}
+@font-face {
+  font-family: 'Geist-Regular';
+  src:  url('/static/Geist.woff2') format('WOFF2'),
+        url('/static/Geist-Regular.ttf') format('truetype'),
+        url('/static/Geist-Regular.otf') format('opentype'),
+}
+:root{
+    --your-custom-font:'Geist-Regular', Verdana, Arial;
+}

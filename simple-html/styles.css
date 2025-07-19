@@ -1,0 +1,104 @@
+body{
+    margin:0;
+    padding:0;
+    overflow-x:hidden;
+}
+@font-face {
+  font-family: 'Geist-Regular';
+  src:  url('/static/Geist.woff2') format('WOFF2'),
+        url('/static/Geist-Regular.ttf') format('truetype'),
+        url('/static/Geist-Regular.otf') format('opentype'),
+}
+:root{
+    --your-custom-font:'Geist-Regular', Verdana, Arial;
+}
+#login-form{
+    display:block;
+    width:340px;
+    margin:auto;    /* Or to center horizontally: margin-left:calc(50vw - (340px/2)); */
+    margin-top:calc(50vh - (370px/2));  /* <- for centering vertically */
+    height:370px;
+    padding:20px;
+    font-family:var(--your-custom-font);
+    border-radius:12px;
+    box-shadow: 0 0px 5px #b9b9b9;
+}
+#login-form h2{
+    font-size:16px;
+    margin-bottom:4px; margin-top:0px;
+}
+#login-form p{
+    font-size:13px;
+    margin-top:8px;
+    margin-bottom:20px;
+}
+.custom-wide-block{
+    padding:10px;
+    border-radius:10px;
+    margin-top:10px; margin-bottom:20px;
+    width:100%;
+}
+#login-form label{
+    font-size:14px;
+    font-weight:600;
+    display:block;
+    margin-bottom:5px;
+}
+#login-form input{
+    padding:10px;
+    border-radius:10px;
+    border:2px solid #e5e5e5;
+    width:calc(100% - 24px);
+    transition: border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+}
+#login-form input:hover,
+#login-form input:focus {
+  outline: none;
+  border-color: #b9b9b9;
+  box-shadow: 0 0px 5px #b9b9b9;
+}
+.custom-col-2{
+    display:grid;
+    grid-template-columns:auto auto;
+    width:100%;
+    align-items: center;
+}
+#login-form #forgot-password{
+    font-weight:400;
+    text-decoration:none;
+    color:black;
+    font-size:13px;
+    display:block; 
+    justify-self:end;
+    padding-bottom:1px;
+    border-bottom:0.5px solid white;
+}
+#login-form #forgot-password:hover{
+    border-bottom:0.5px solid black;
+}
+#login-form div#remember-me-div label{
+    display:inline-block;
+    font-weight:400;
+    transform:translateY(-1px);
+    user-select: none; -ms-user-select: none; -moz-user-select: none; -webkit-user-select: none;
+    cursor:pointer;
+}
+#login-form div#remember-me-div input{
+    box-sizing:border-box;
+    margin:3px 3px 3px 0px;
+    cursor:pointer;
+    width:min-content;
+}
+#login-form button{
+    background-color:black;
+    border:1px solid black;
+    color:white;
+    display:block;
+    margin-top:60px;
+    margin-bottom:0px;
+    cursor:pointer;
+    transition: box-shadow 0.25s ease-in-out;
+}
+#login-form button:hover{
+    box-shadow: 0 0px 5px #373737;
+}
