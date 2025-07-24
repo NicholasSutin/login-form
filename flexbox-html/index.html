@@ -7,28 +7,68 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+    <!--minor issues with initial white flash on first load-->
 
+    <button id="theme-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><!-- Icon from css[.]gg by Astrit (MIT LICENSE)-->
+            <g fill="currentColor">
+                <path d="M12 16a4 4 0 0 0 0-8z"/>
+                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m0 2v4a4 4 0 1 0 0 8v4a8 8 0 1 0 0-16" clip-rule="evenodd"/>
+            </g>
+        </svg>
+    </button>
 
     <form id="login-form">
-        <h2>Login to your account</h2>
+        <h4>Login to your account</h4>
         <p>Enter your email below to login to your account</p>
         <div>
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="user@mail.com" required autocomplete="email" class="custom-wide-block">
         </div>
         <div>
-            <div class="custom-col-2">
-                <label for="pw">Password</label>
+            <input id="email" name="email" type="email" placeholder="user@mail.com" required autocomplete="email">
+        </div>
+        <div>
+            <div>
+                <label for="password">Password</label>
                 <a href="#" id="forgot-password">Forgot your password?</a>
             </div>
-            <input id="pw" name="password" type="password" required autocomplete="current-password" class="custom-wide-block">
+        </div>
+        <div>
+            <input id="password" name="password" type="password" required autocomplete="current-password">
         </div>
         <div id="remember-me-div">
             <input type="checkbox" id="remember-me" name="remember_me" value="yes">
             <label for="remember-me">Remember me on this device</label>
         </div>
-        <button type="submit" class="custom-wide-block">Login</button>
+        <button type="submit" id="submit">Login</button>
     </form>
+
+    <script>
+        /*This script for theme toggling. If you don't need a toggle button, remove this script and the .dark class from :root.dark
+        Also relies on HTML button id="theme-toggle"
+        */
+
+        const rootEl = document.documentElement;
+        const toggleBtn = document.getElementById('theme-toggle');
+        const storageKey = 'theme-preference';
+        const saved = localStorage.getItem(storageKey);
+        if (saved === 'dark' || saved === 'light') {
+            rootEl.classList.toggle('dark', saved === 'dark');
+        } else {
+            const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            rootEl.classList.toggle('dark', darkQuery.matches);
+            darkQuery.addEventListener('change', e => {
+            if (!localStorage.getItem(storageKey)) {
+                rootEl.classList.toggle('dark', e.matches);
+            }
+            });
+        }
+        toggleBtn.addEventListener('click', () => {
+            const isDark = rootEl.classList.toggle('dark');
+            // save their explicit choice
+            localStorage.setItem(storageKey, isDark ? 'dark' : 'light');
+        });
+    </script>
 
 </body>
 </html>

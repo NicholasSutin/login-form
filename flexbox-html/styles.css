@@ -1,11 +1,3 @@
-body{
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--your-custom-font);
-}
 @font-face {
   font-family: 'Geist-Regular';
   src:  url('/static/Geist.woff2') format('WOFF2'),
@@ -14,4 +6,102 @@ body{
 }
 :root{
     --your-custom-font:'Geist-Regular', Verdana, Arial;
+    --form-shadow-color: #b9b9b9;
+    --input-shadow-color:#e5e5e5;
+    --contrast:black;
+    --background:white;
+}
+@media (prefers-color-scheme: dark) {
+  :root.dark {
+    --form-shadow-color: #444;   
+    --input-shadow-color: #333;  
+    --contrast: white;         
+    --background: #111;        
+  }
+}
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--your-custom-font);
+    min-height:100vh;
+    background-color:var(--background);
+    color:var(--contrast);
+}
+
+form#login-form{
+    width:340px;
+    box-shadow: 0 0px 5px var(--form-shadow-color);
+    padding:20px;
+    border-radius:12px;
+    display:flex;
+    flex-direction:column; 
+    align-items:stretch;
+    gap:10px;
+}
+h2, p, label, #forgot-password{
+    margin:0px;
+    font-size:13px;
+}
+h4{
+    margin:0px;
+}
+label:not(#remember-me-div label){
+    font-size:14px;
+    font-weight:600;
+}
+div:not(#remember-me-div) > input, #submit {
+  width: calc(100% - 24px);    
+  padding:10px;
+  border-radius:10px;
+  border:2px solid var(--input-shadow-color);
+  transition: border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+  background-color:var(--background);
+  color:var(--contrast);
+}
+#login-form input:hover,
+#login-form input:focus {
+  outline: none;
+  border-color: var(--form-shadow-color);
+  box-shadow: 0 0px 5px var(--form-shadow-color);
+}
+#remember-me-div > *:hover{
+    cursor:pointer;
+}
+#remember-me-div input{
+    transform:translateY(2px);
+}
+#forgot-password{
+    text-decoration:none;
+    color:var(--contrast);
+    margin-left:125px;
+}
+#forgot-password:hover{
+    padding-bottom:2px;
+    border-bottom:1px solid var(--contrast);
+}
+#submit{
+    margin-top:10px;
+    width:100%;
+    background-color:var(--contrast);
+    border:2px solid var(--contrast);
+    color:var(--background);
+    cursor:pointer;
+    transition: box-shadow 0.25s ease-in-out;
+}
+#login-form #submit:hover{
+    box-shadow: 0 0px 8px var(--input-shadow-color);
+}
+/*---*/
+#theme-toggle{
+    position:absolute;
+    top:10px;
+    right:5px;
+    background:none;
+    border:none;
+}
+#theme-toggle svg{
+    color:var(--contrast);
 }
